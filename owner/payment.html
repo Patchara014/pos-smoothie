@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ชำระเงิน | ป้าณาน้ำผลไม้ปั่น</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <div id="header"></div>
+        <main class="main-content">
+            <div class="page-header">
+                <div class="breadcrumb"><a href="dashboard.html">🏠 หน้าแรก</a> <span>/</span> <a
+                        href="pos.html">ขายสินค้า</a> <span>/</span> ชำระเงิน</div>
+                <h1>💳 ชำระเงิน</h1>
+                <p>เลือกวิธีชำระเงินและยืนยันคำสั่งซื้อ</p>
+            </div>
+            <div class="page-content" id="paymentSection">
+                <div class="payment-layout">
+                    <!-- Payment Methods -->
+                    <div>
+                        <h3 style="margin-bottom:1rem">เลือกวิธีชำระเงิน</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method active" data-method="cash">
+                                <div class="method-icon">💵</div>
+                                <div>
+                                    <div class="method-name">เงินสด</div>
+                                    <div class="method-desc">ชำระด้วยเงินสด</div>
+                                </div>
+                            </div>
+                            <div class="payment-method" data-method="promptpay">
+                                <div class="method-icon">📱</div>
+                                <div>
+                                    <div class="method-name">พร้อมเพย์</div>
+                                    <div class="method-desc">โอนเงินผ่าน PromptPay</div>
+                                </div>
+                            </div>
+                            <div class="payment-method" data-method="card">
+                                <div class="method-icon">💳</div>
+                                <div>
+                                    <div class="method-name">บัตรเครดิต/เดบิต</div>
+                                    <div class="method-desc">ชำระด้วยบัตร</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PromptPay QR Code -->
+                    <div id="promptpayQR" style="display:none" class="animate-fade-in">
+                        <div class="card" style="text-align:center;padding:2rem">
+                            <h3 style="margin-bottom:.5rem">📱 สแกนจ่ายด้วย PromptPay</h3>
+                            <p style="color:var(--text-secondary);margin-bottom:1rem">สแกน QR Code เพื่อชำระเงิน</p>
+                            <div id="qrCanvas"
+                                style="display:inline-block;padding:1rem;background:#fff;border-radius:12px;box-shadow:var(--shadow-md)">
+                            </div>
+                            <p style="margin-top:1rem;font-size:1.3rem;font-weight:700;color:var(--primary)"
+                                id="qrAmount"></p>
+                            <p style="color:var(--text-muted);font-size:.85rem" id="qrPromptpayId"></p>
+                        </div>
+                    </div>
+                    <!-- Receipt -->
+                    <div>
+                        <div class="card receipt-card">
+                            <div class="card-header">🧾 สรุปรายการ</div>
+                            <div class="card-body">
+                                <div id="paymentItems"></div>
+                                <div
+                                    style="border-top:2px solid var(--border);margin-top:1rem;padding-top:1rem;display:flex;justify-content:space-between;align-items:center">
+                                    <strong style="font-size:1.1rem">ยอดรวมทั้งสิ้น</strong>
+                                    <strong style="font-size:1.5rem;color:var(--primary)" id="paymentTotal">฿0</strong>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button id="confirmPayment" class="btn btn-primary btn-block btn-lg">✅
+                                    ยืนยันชำระเงิน</button>
+                                <a href="pos.html" class="btn btn-outline btn-block" style="margin-top:.5rem">←
+                                    กลับไปเลือกสินค้า</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer"></div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานยอดขาย | ป้าณาน้ำผลไม้ปั่น</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <div id="header"></div>
+        <main class="main-content">
+            <div class="page-header">
+                <div class="breadcrumb"><a href="dashboard.html">🏠 หน้าแรก</a> <span>/</span> รายงานยอดขาย</div>
+                <h1>📈 รายงานและสรุปยอดขาย</h1>
+                <p>ข้อมูลวิเคราะห์ยอดขายและสินค้าสำหรับเจ้าของร้าน</p>
+            </div>
+
+            <div class="page-content" style="padding-top:1rem">
+                <!-- Filters -->
+                <div class="card animate-fade-in" style="margin-bottom:var(--sp-xl)">
+                    <div class="card-body"
+                        style="display:flex;align-items:center;gap:var(--sp-md);padding:1rem var(--sp-lg)">
+                        <strong style="font-size:var(--font-sm)">ช่วงเวลา: </strong>
+                        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-md)">
+                            <div style="display:flex;gap:.5rem">
+                                <button class="btn btn-sm btn-outline active report-period-btn"
+                                    data-mode="day">รายวัน</button>
+                                <button class="btn btn-sm btn-outline report-period-btn"
+                                    data-mode="month">รายเดือนนี้</button>
+                                <button class="btn btn-sm btn-outline report-period-btn"
+                                    data-mode="year">รายปีนี้</button>
+                                <button class="btn btn-sm btn-outline report-period-btn"
+                                    data-mode="all">ทั้งหมด</button>
+                            </div>
+                            <div style="height:24px;width:1px;background:var(--border);margin:0 .5rem"></div>
+                            <div style="display:flex;align-items:center;gap:.5rem">
+                                <span style="font-size:var(--font-xs);color:var(--text-muted)">เลือกเฉพาะ:</span>
+                                <select id="reportMonth" class="form-select"
+                                    style="width:130px;padding:.25rem .5rem;font-size:var(--font-xs)">
+                                    <option value="">ทุกเดือน</option>
+                                    <option value="0">มกราคม</option>
+                                    <option value="1">กุมภาพันธ์</option>
+                                    <option value="2">มีนาคม</option>
+                                    <option value="3">เมษายน</option>
+                                    <option value="4">พฤษภาคม</option>
+                                    <option value="5">มิถุนายน</option>
+                                    <option value="6">กรกฎาคม</option>
+                                    <option value="7">สิงหาคม</option>
+                                    <option value="8">กันยายน</option>
+                                    <option value="9">ตุลาคม</option>
+                                    <option value="10">พฤศจิกายน</option>
+                                    <option value="11">ธันวาคม</option>
+                                </select>
+                                <select id="reportYear" class="form-select"
+                                    style="width:100px;padding:.25rem .5rem;font-size:var(--font-xs)"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid stagger"
+                    style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--sp-lg);margin-bottom:var(--sp-xl)">
+                    <div class="card stat-card">
+                        <div class="stat-icon" style="background:var(--primary-bg);color:var(--primary)">💰</div>
+                        <div class="stat-info">
+                            <h3>ยอดขายรวม (บาท)</h3>
+                            <div class="stat-value" id="reportRevenue">0</div>
+                        </div>
+                    </div>
+                    <div class="card stat-card">
+                        <div class="stat-icon" style="background:var(--success-bg);color:var(--success)">📦</div>
+                        <div class="stat-info">
+                            <h3>จำนวนออเดอร์</h3>
+                            <div class="stat-value" id="reportOrders">0</div>
+                        </div>
+                    </div>
+                    <div class="card stat-card">
+                        <div class="stat-icon" style="background:var(--warning-bg);color:var(--warning)">🍹</div>
+                        <div class="stat-info">
+                            <h3>สินค้าที่ขายได้ (แก้ว)</h3>
+                            <div class="stat-value" id="reportItems">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insights Grid -->
+                <div class="grid stagger" style="grid-template-columns:1fr 1fr;gap:var(--sp-xl)">
+                    <div class="card">
+                        <div class="card-header">
+                            🏆 สินค้าขายดีที่สุด
+                        </div>
+                        <div class="card-body text-center" id="reportBestSelling" style="padding:2rem 1rem">
+                            <div style="font-size:3rem;margin-bottom:.5rem">🍹</div>
+                            <h3 style="font-size:var(--font-xl)">-</h3>
+                            <p style="color:var(--text-secondary);margin-top:.5rem">ขายได้ 0 แก้ว</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            📉 สินค้าขายได้น้อยที่สุด
+                        </div>
+                        <div class="card-body text-center" id="reportLeastSelling" style="padding:2rem 1rem">
+                            <div style="font-size:3rem;margin-bottom:.5rem">🧊</div>
+                            <h3 style="font-size:var(--font-xl)">-</h3>
+                            <p style="color:var(--text-secondary);margin-top:.5rem">ขายได้ 0 แก้ว</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card animate-fade-in" style="margin-top:var(--sp-xl)">
+                    <div class="card-header">
+                        📊 สรุปยอดขายรายสินค้า
+                    </div>
+                    <div class="card-body">
+                        <div id="productChartContainer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer"></div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="สมัครสมาชิก ร้านป้าณาน้ำผลไม้ปั่น">
+    <title>สมัครสมาชิก | ป้าณาน้ำผลไม้ปั่น</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+    <div class="auth-page">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <div class="logo-icon">🍹</div>
+                <h1>สมัครสมาชิก</h1>
+                <p>สร้างบัญชีลูกค้าใหม่</p>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regName">ชื่อ-นามสกุล</label>
+                    <input type="text" id="regName" class="form-input" placeholder="กรอกชื่อ-นามสกุล" required>
+                </div>
+                <div class="form-group">
+                    <label for="regUsername">ชื่อผู้ใช้</label>
+                    <input type="text" id="regUsername" class="form-input" placeholder="เลือกชื่อผู้ใช้" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">อีเมล</label>
+                    <input type="email" id="regEmail" class="form-input" placeholder="example@mail.com">
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="regPhone" class="form-input" placeholder="08x-xxx-xxxx">
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">รหัสผ่าน</label>
+                    <input type="password" id="regPassword" class="form-input" placeholder="อย่างน้อย 4 ตัวอักษร"
+                        required minlength="4">
+                </div>
+                <div class="form-group">
+                    <label for="regConfirm">ยืนยันรหัสผ่าน</label>
+                    <input type="password" id="regConfirm" class="form-input" placeholder="กรอกรหัสผ่านอีกครั้ง"
+                        required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg">สมัครสมาชิก</button>
+            </form>
+            <div class="auth-footer">
+                <p style="margin:0">มีบัญชีอยู่แล้ว? <a href="index.html">เข้าสู่ระบบ</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

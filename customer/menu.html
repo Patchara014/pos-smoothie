@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เมนูสั่งซื้อ | ป้าณาน้ำผลไม้ปั่น</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+    <div id="header"></div>
+    <main style="padding-top:var(--header-h)">
+        <div class="container" style="padding:var(--sp-xl) var(--sp-lg)">
+            <!-- Hero -->
+            <div class="menu-hero animate-fade-in">
+                <h2>🍹 ยินดีต้อนรับสู่ร้านป้าณา</h2>
+                <p>น้ำผลไม้ปั่นสด ทำจากผลไม้คุณภาพ อร่อยและดีต่อสุขภาพ</p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 340px;gap:var(--sp-xl)">
+                <!-- Menu -->
+                <div>
+                    <h3 style="margin-bottom:var(--sp-lg)">📋 เมนูทั้งหมด</h3>
+                    <div class="menu-grid stagger" id="menuGrid"></div>
+                </div>
+
+                <!-- Cart Panel -->
+                <div>
+                    <div class="cart-panel" id="customerCartPanel"
+                        style="position:sticky;top:calc(var(--header-h) + 1.5rem)">
+                        <div class="cart-header">
+                            <h3>🛒 ตะกร้า (<span id="custCartCount">0</span>)</h3>
+                        </div>
+                        <div class="cart-items" id="custCartItems" style="max-height:360px;overflow-y:auto"></div>
+                        <div class="cart-summary">
+                            <div class="summary-row total"><span>ยอดรวม</span><span id="custCartTotal">฿0</span></div>
+
+                            <!-- Payment Methods Selection -->
+                            <div style="margin: 1rem 0;">
+                                <label
+                                    style="font-size: .9rem; color: var(--text-secondary); margin-bottom: .5rem; display: block;">วิธีชำระเงิน:</label>
+                                <div class="payment-methods" style="grid-template-columns: 1fr; gap: .5rem;"
+                                    id="custPaymentMethods">
+                                    <div class="payment-method active" data-method="promptpay"
+                                        style="padding: .75rem; text-align: center;">
+                                        <div class="method-icon" style="font-size: 1.5rem; margin-bottom: .25rem;">📱
+                                        </div>
+                                        <div class="method-name" style="font-size: .9rem;">ชำระเงินผ่าน พร้อมเพย์</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-block btn-lg" onclick="placeCustomerOrder()">📦
+                                สั่งซื้อเลย!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- PromptPay Modal -->
+    <div class="modal-overlay" id="custPromptpayModal">
+        <div class="modal" style="max-width:350px;text-align:center">
+            <h3 style="margin-bottom:.5rem">📱 สแกนจ่ายด้วย PromptPay</h3>
+            <p style="color:var(--text-secondary);margin-bottom:1rem">สแกน QR Code แล้วระบุยอดชำระเอง</p>
+            <div id="custQrCanvas"
+                style="padding:1rem;background:#fff;border-radius:12px;display:inline-block;box-shadow:var(--shadow-md)">
+            </div>
+            <p style="margin-top:1rem;font-size:1.3rem;font-weight:700;color:var(--primary)" id="custQrAmount"></p>
+            <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:1.5rem" id="custQrPromptpayId"></p>
+            <button class="btn btn-primary btn-block" onclick="confirmCustPromptpayOrder()">✅ โอนเรียบร้อย
+                บันทึกออเดอร์</button>
+            <button class="btn btn-outline btn-block" style="margin-top:.5rem"
+                onclick="closeCustPromptpayModal()">ยกเลิก</button>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>

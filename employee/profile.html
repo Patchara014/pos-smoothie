@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขโปรไฟล์ | พนักงาน</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <div id="header"></div>
+        <main class="main-content">
+            <div class="page-header">
+                <div class="breadcrumb"><a href="dashboard.html">🏠 หน้าแรก</a> <span>/</span> แก้ไขโปรไฟล์</div>
+                <h1>👤 แก้ไขโปรไฟล์</h1>
+                <p>อัปเดตข้อมูลส่วนตัวของคุณ</p>
+            </div>
+            <div class="page-content">
+                <div class="card profile-layout animate-fade-in">
+                    <div class="card-body" style="padding:2rem">
+                        <div class="profile-avatar" id="profAvatar">?</div>
+                        <form id="profileForm">
+                            <div class="profile-form">
+                                <div class="form-group">
+                                    <label for="profName">ชื่อ-นามสกุล</label>
+                                    <input type="text" id="profName" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profUsername">ชื่อผู้ใช้</label>
+                                    <input type="text" id="profUsername" class="form-input" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profEmail">อีเมล</label>
+                                    <input type="email" id="profEmail" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profPhone">เบอร์โทรศัพท์</label>
+                                    <input type="tel" id="profPhone" class="form-input">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="profNewPass">เปลี่ยนรหัสผ่าน (เว้นว่างถ้าไม่ต้องการเปลี่ยน)</label>
+                                    <input type="password" id="profNewPass" class="form-input"
+                                        placeholder="รหัสผ่านใหม่" minlength="4">
+                                </div>
+                                <div class="full-width" style="margin-top:.5rem">
+                                    <button type="submit" class="btn btn-primary btn-lg">💾 บันทึกข้อมูล</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="footer"></div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>

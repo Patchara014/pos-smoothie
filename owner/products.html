@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จัดการสินค้า | ป้าณาน้ำผลไม้ปั่น</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <div id="header"></div>
+        <main class="main-content">
+            <div class="page-header">
+                <div class="breadcrumb"><a href="dashboard.html">🏠 หน้าแรก</a> <span>/</span> จัดการสินค้า</div>
+                <h1>🍹 จัดการสินค้า</h1>
+                <p>เพิ่ม แก้ไข และลบสินค้าในร้าน</p>
+            </div>
+            <div class="page-content">
+                <div class="products-header">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="productSearch" class="form-input" placeholder="ค้นหาสินค้า..."
+                            style="padding-left:2.5rem">
+                    </div>
+                    <button class="btn btn-primary" onclick="openProductModal()">✚ เพิ่มสินค้าใหม่</button>
+                </div>
+                <div class="card animate-fade-in">
+                    <div class="table-wrapper">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width:50px"></th>
+                                    <th>ชื่อสินค้า</th>
+                                    <th>หมวดหมู่</th>
+                                    <th>ราคา</th>
+                                    <th>สถานะ</th>
+                                    <th style="width:160px">จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="footer"></div>
+        </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">เพิ่มสินค้าใหม่</h3>
+                <button class="modal-close" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm" onsubmit="event.preventDefault();saveProduct()">
+                    <div class="form-group">
+                        <label for="pEmoji">ไอคอน Emoji</label>
+                        <input type="text" id="pEmoji" class="form-input" value="🍹" placeholder="เลือก emoji">
+                    </div>
+                    <div class="form-group">
+                        <label for="pName">ชื่อสินค้า</label>
+                        <input type="text" id="pName" class="form-input" placeholder="เช่น น้ำมะม่วงปั่น" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pPrice">ราคา (บาท)</label>
+                        <input type="number" id="pPrice" class="form-input" placeholder="0" required min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="pCategory">หมวดหมู่</label>
+                        <select id="pCategory" class="form-input form-select">
+                            <option value="ผลไม้ปั่น">🍹 ผลไม้ปั่น</option>
+                            <option value="น้ำคั้นสด">🍊 น้ำคั้นสด</option>
+                            <option value="สมูทตี้">🫐 สมูทตี้</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pDesc">รายละเอียด</label>
+                        <input type="text" id="pDesc" class="form-input" placeholder="คำอธิบายสั้นๆ">
+                    </div>
+                    <div class="form-group">
+                        <label for="pStatus">สถานะ</label>
+                        <select id="pStatus" class="form-input form-select">
+                            <option value="active">✅ ขายอยู่</option>
+                            <option value="inactive">❌ ปิดการขาย</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeProductModal()">ยกเลิก</button>
+                <button class="btn btn-primary" onclick="saveProduct()">💾 บันทึก</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
