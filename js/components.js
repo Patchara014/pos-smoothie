@@ -69,6 +69,11 @@ async function renderHeader() {
   }
 
   headerEl.innerHTML = `
+    <div class="mobile-sidebar-header">
+      <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+      <div class="mobile-brand">🍹 ป้าณาน้ำผลไม้ปั่น</div>
+    </div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
     <aside class="sidebar">
       <div class="sidebar-brand">
         <div class="logo">🍹</div>
@@ -89,6 +94,13 @@ async function renderHeader() {
   `;
 }
 
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.querySelector('.sidebar-overlay');
+  if (sidebar) sidebar.classList.toggle('open');
+  if (overlay) overlay.classList.toggle('active');
+}
+
 function renderFooter() {
   const footerEl = document.getElementById('footer');
   if (!footerEl) return;
@@ -103,3 +115,4 @@ async function initComponents() {
   await renderHeader();
   renderFooter();
 }
+
