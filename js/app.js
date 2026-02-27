@@ -286,6 +286,17 @@ function renderCart() {
   if (totalEl) totalEl.textContent = formatCurrency(total);
   if (subtotalEl) subtotalEl.textContent = formatCurrency(total);
   if (countEl) countEl.textContent = count;
+
+  // Mobile cart toggle
+  const header = document.querySelector('.cart-header');
+  if (header && !header.dataset.listener) {
+    header.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        document.querySelector('.cart-panel').classList.toggle('open');
+      }
+    });
+    header.dataset.listener = 'true';
+  }
 }
 
 function goToPayment() {
@@ -827,6 +838,17 @@ function renderCustomerCart() {
   }
 
   document.getElementById('custCartTotal').textContent = formatCurrency(total);
+
+  // Mobile cart toggle
+  const header = document.querySelector('.cart-header');
+  if (header && !header.dataset.listener) {
+    header.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        document.querySelector('.cart-panel').classList.toggle('open');
+      }
+    });
+    header.dataset.listener = 'true';
+  }
 }
 
 async function placeCustomerOrder() {

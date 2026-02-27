@@ -165,6 +165,19 @@ ol {
     position: relative
 }
 
+.responsive-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--sp-xl);
+}
+
+@media(max-width:1024px) {
+    .responsive-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-lg);
+    }
+}
+
 /* ===== Animations ===== */
 @keyframes fadeIn {
     from {

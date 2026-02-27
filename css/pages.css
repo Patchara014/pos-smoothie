@@ -592,7 +592,8 @@
 /* ===== Responsive ===== */
 @media(max-width:1024px) {
     .pos-layout {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
+        height: auto;
     }
 
     .payment-layout {
@@ -606,11 +607,55 @@
     .profile-form .full-width {
         grid-column: span 1
     }
+
+    .cart-panel {
+        position: fixed !important;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto !important;
+        z-index: 1001;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        box-shadow: 0 -10px 25px rgba(0, 0, 0, .1);
+        transform: translateY(calc(100% - 70px));
+        transition: transform var(--duration-md) var(--ease);
+        max-height: 80vh;
+    }
+
+    .cart-panel.open {
+        transform: translateY(0);
+    }
+
+    .cart-header {
+        padding: var(--sp-md) var(--sp-lg);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Arrow indicator for mobile cart */
+    .cart-header::before {
+        content: '▲';
+        font-size: 0.7rem;
+        transition: transform var(--duration);
+        margin-right: var(--sp-sm);
+        color: var(--primary);
+    }
+
+    .cart-panel.open .cart-header::before {
+        transform: rotate(180deg);
+    }
+
+    .cart-items {
+        max-height: 40vh;
+    }
 }
 
 @media(max-width:768px) {
     .stats-grid {
-        grid-template-columns: 1fr
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: var(--sp-md);
     }
 
     .chart-grid {
@@ -618,7 +663,8 @@
     }
 
     .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr))
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: var(--sp-sm);
     }
 
     .menu-grid {
@@ -627,5 +673,28 @@
 
     .auth-card {
         padding: var(--sp-xl)
+    }
+
+    .page-header h1 {
+        font-size: var(--font-xl);
+    }
+
+    .menu-hero {
+        padding: var(--sp-lg);
+    }
+
+    .menu-hero h2 {
+        font-size: var(--font-xl);
+    }
+}
+
+@media(max-width:480px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .btn-lg {
+        padding: .625rem 1.25rem;
+        font-size: var(--font-sm);
     }
 }
