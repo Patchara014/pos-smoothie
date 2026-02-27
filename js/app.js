@@ -291,7 +291,7 @@ function renderCart() {
   const header = document.querySelector('.cart-header');
   if (header && !header.dataset.listener) {
     header.addEventListener('click', () => {
-      if (window.innerWidth <= 1024) {
+      if (window.innerWidth <= 767) {
         document.querySelector('.cart-panel').classList.toggle('open');
       }
     });
@@ -843,7 +843,7 @@ function renderCustomerCart() {
   const header = document.querySelector('.cart-header');
   if (header && !header.dataset.listener) {
     header.addEventListener('click', () => {
-      if (window.innerWidth <= 1024) {
+      if (window.innerWidth <= 767) {
         document.querySelector('.cart-panel').classList.toggle('open');
       }
     });

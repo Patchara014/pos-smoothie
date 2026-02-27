@@ -1,11 +1,13 @@
 /* ===== Auth Pages ===== */
 .auth-page {
-    min-height: 100vh;
+    min-height: var(--view-h);
+    min-height: -webkit-fill-available;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #0D47A1 0%, #1976D2 40%, #42A5F5 70%, #FFC107 100%);
     padding: var(--sp-lg);
+    padding-bottom: calc(var(--sp-lg) + env(safe-area-inset-bottom));
     position: relative;
     overflow: hidden;
 }
@@ -590,7 +592,7 @@
 }
 
 /* ===== Responsive ===== */
-@media(max-width:1024px) {
+@media(max-width:767px) {
     .pos-layout {
         grid-template-columns: 1fr;
         height: auto;
@@ -616,10 +618,12 @@
         top: auto !important;
         z-index: 1001;
         border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-        box-shadow: 0 -10px 25px rgba(0, 0, 0, .1);
-        transform: translateY(calc(100% - 70px));
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, .15);
+        transform: translateY(calc(100% - 66px - env(safe-area-inset-bottom)));
         transition: transform var(--duration-md) var(--ease);
-        max-height: 80vh;
+        max-height: 85vh;
+        padding-bottom: env(safe-area-inset-bottom);
+        background: var(--surface);
     }
 
     .cart-panel.open {
@@ -648,7 +652,19 @@
     }
 
     .cart-items {
-        max-height: 40vh;
+        max-height: 50vh;
+    }
+}
+
+/* iPad / Tablet Landscape behavior for POS */
+@media(min-width:768px) and (max-width:1180px) {
+    .pos-layout {
+        grid-template-columns: 1fr 340px;
+        height: calc(var(--view-h) - var(--header-h) - 80px);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
 }
 

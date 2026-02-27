@@ -20,7 +20,8 @@ body {
     color: var(--text);
     background: var(--bg);
     line-height: 1.6;
-    min-height: 100vh;
+    min-height: var(--view-h);
+    min-height: -webkit-fill-available;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -171,7 +172,7 @@ ol {
     gap: var(--sp-xl);
 }
 
-@media(max-width:1024px) {
+@media(max-width:767px) {
     .responsive-grid {
         grid-template-columns: 1fr;
         gap: var(--sp-lg);
