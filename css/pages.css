@@ -597,25 +597,104 @@
     background: var(--danger)
 }
 
-/* ===== Responsive ===== */
+/* ===== Responsive — Tablet (≤767px) ===== */
 @media(max-width:767px) {
+
+    /* Report filters — stack vertically */
+    .report-filters-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: var(--sp-sm) !important;
+        padding: var(--sp-md) !important;
+    }
+
+    .report-filters-bar>div {
+        flex-direction: column !important;
+        gap: var(--sp-sm) !important;
+    }
+
+    .report-filters-bar>div>div {
+        flex-wrap: wrap !important;
+    }
+
+    .report-filters-bar select {
+        width: 100% !important;
+    }
+
+    /* Hide the vertical divider on mobile */
+    .report-filters-bar>div>div[style*="height:24px"] {
+        display: none !important;
+    }
+
+
+    /* POS Layout */
     .pos-layout {
         grid-template-columns: 1fr;
         height: auto;
+        gap: var(--sp-md);
     }
 
+    .pos-products {
+        padding-right: 0;
+    }
+
+    /* POS search + categories row — stack */
+    .pos-products>div:first-child {
+        flex-direction: column;
+        gap: var(--sp-sm) !important;
+    }
+
+    .pos-categories {
+        width: 100%;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: var(--sp-xs);
+    }
+
+    .pos-categories .cat-btn {
+        flex-shrink: 0;
+        font-size: var(--font-xs);
+        padding: var(--sp-xs) var(--sp-md);
+    }
+
+    /* Payment Layout */
     .payment-layout {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
+        gap: var(--sp-lg);
     }
 
+    .payment-method {
+        padding: var(--sp-md);
+        gap: var(--sp-md);
+    }
+
+    .payment-method .method-icon {
+        font-size: 1.5rem;
+        width: 40px;
+    }
+
+    /* Receipt card — un-sticky on mobile */
+    .receipt-card {
+        position: static !important;
+    }
+
+    /* Profile */
     .profile-form {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
     }
 
     .profile-form .full-width {
-        grid-column: span 1
+        grid-column: span 1;
     }
 
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    /* Cart bottom sheet */
     .cart-panel {
         position: fixed !important;
         bottom: 0;
@@ -660,6 +739,178 @@
     .cart-items {
         max-height: 50vh;
     }
+
+    /* Cart item — tighter */
+    .cart-item .item-img {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    /* Orders filters — stack */
+    .orders-filters {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--sp-sm);
+    }
+
+    .orders-filters .search-box {
+        max-width: 100%;
+    }
+
+    .orders-filters select {
+        width: 100% !important;
+        min-width: unset !important;
+    }
+
+    .orders-filters>div:last-child {
+        margin-left: 0;
+        flex-direction: column;
+        gap: var(--sp-xs);
+        font-size: var(--font-xs);
+    }
+
+    /* Stats grid */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--sp-sm);
+    }
+
+    /* Chart grid */
+    .chart-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-md);
+    }
+
+    /* Menu page */
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-md);
+    }
+
+    .menu-hero {
+        padding: var(--sp-lg);
+        border-radius: var(--radius-lg);
+        margin-bottom: var(--sp-lg);
+    }
+
+    .menu-hero h2 {
+        font-size: var(--font-xl);
+    }
+
+    .menu-hero::after {
+        width: 100px;
+        height: 100px;
+    }
+
+    .menu-item .menu-img {
+        height: 130px;
+        font-size: 2.5rem;
+    }
+
+    /* Product grid */
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: var(--sp-sm);
+    }
+
+    .product-card {
+        padding: var(--sp-sm);
+    }
+
+    .product-card .product-img {
+        font-size: 2rem;
+    }
+
+    .product-card .product-name {
+        font-size: var(--font-xs);
+    }
+
+    .product-card .product-price {
+        font-size: var(--font-sm);
+    }
+
+    /* Auth page */
+    .auth-card {
+        padding: var(--sp-xl);
+    }
+
+    .auth-logo .logo-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+
+    /* Customer menu page — cart as bottom sheet */
+    #customerCartPanel {
+        position: fixed !important;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto !important;
+        z-index: 1001;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, .15);
+        transform: translateY(calc(100% - 66px - env(safe-area-inset-bottom)));
+        transition: transform var(--duration-md) var(--ease);
+        max-height: 85vh;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    #customerCartPanel.open {
+        transform: translateY(0);
+    }
+
+    /* ===== Customer pages (no sidebar layout) ===== */
+
+    /* Customer pages use <main style="padding-top:header-h"> with bottom nav */
+    /* Need padding-bottom so content doesn't hide behind bottom nav */
+    body>main,
+    body>main>.container {
+        padding-bottom: 80px !important;
+    }
+
+    /* Customer header — tighter on mobile */
+    body>#header .app-header {
+        padding: 0 var(--sp-sm);
+    }
+
+    /* Customer profile card — smaller padding on mobile */
+    .profile-layout .card-body,
+    .card-body[style*="padding:2rem"] {
+        padding: var(--sp-md) !important;
+    }
+
+    /* Receipt modal footer — stack buttons on mobile */
+    .receipt-modal .modal-footer,
+    #receiptModal .modal-footer {
+        flex-direction: column;
+        gap: var(--sp-sm) !important;
+    }
+
+    .receipt-modal .modal-footer>div,
+    #receiptModal .modal-footer>div {
+        display: flex;
+        flex-direction: column;
+        gap: var(--sp-sm);
+        width: 100%;
+    }
+
+    .receipt-modal .modal-footer .btn,
+    #receiptModal .modal-footer .btn {
+        width: 100%;
+    }
+
+    /* Customer orders list — full width cards */
+    #customerOrdersList .card {
+        margin-bottom: var(--sp-sm);
+    }
+
+    /* Customer profile container — less padding */
+    .container[style*="max-width:700px"] {
+        padding: var(--sp-md) !important;
+        padding-bottom: 80px !important;
+    }
 }
 
 /* iPad / Tablet Landscape behavior for POS */
@@ -674,49 +925,166 @@
     }
 }
 
-@media(max-width:768px) {
-    .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: var(--sp-md);
-    }
+/* ===== Responsive — Phone (≤480px) ===== */
+@media(max-width:480px) {
 
-    .chart-grid {
-        grid-template-columns: 1fr
-    }
-
+    /* Product grid — 2 columns */
     .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: var(--sp-sm);
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--sp-xs);
     }
 
-    .menu-grid {
-        grid-template-columns: 1fr
+    .product-card {
+        padding: var(--sp-xs);
     }
 
+    .product-card .product-img {
+        font-size: 1.8rem;
+        border-radius: var(--radius-sm);
+    }
+
+    .product-card .product-name {
+        font-size: 0.7rem;
+        margin-bottom: 2px;
+    }
+
+    .product-card .product-price {
+        font-size: var(--font-xs);
+    }
+
+    /* Stats grid — single column on very small */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--sp-xs);
+    }
+
+    /* Auth page */
     .auth-card {
-        padding: var(--sp-xl)
+        padding: var(--sp-lg) var(--sp-md);
+        border-radius: var(--radius-lg);
     }
 
-    .page-header h1 {
-        font-size: var(--font-xl);
+    .auth-logo {
+        margin-bottom: var(--sp-lg);
     }
 
+    .auth-logo .logo-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.4rem;
+    }
+
+    .auth-logo h1 {
+        font-size: var(--font-lg);
+    }
+
+    /* Menu hero */
     .menu-hero {
-        padding: var(--sp-lg);
+        padding: var(--sp-md);
+        border-radius: var(--radius);
     }
 
     .menu-hero h2 {
-        font-size: var(--font-xl);
-    }
-}
-
-@media(max-width:480px) {
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+        font-size: var(--font-lg);
     }
 
-    .btn-lg {
-        padding: .625rem 1.25rem;
+    .menu-item .menu-img {
+        height: 110px;
+        font-size: 2rem;
+    }
+
+    .menu-item .menu-info {
+        padding: var(--sp-sm);
+    }
+
+    .menu-item .menu-name {
         font-size: var(--font-sm);
+    }
+
+    .menu-item .menu-desc {
+        font-size: var(--font-xs);
+    }
+
+    .menu-item .menu-price {
+        font-size: var(--font-base);
+    }
+
+    /* Payment — compact */
+    .payment-method {
+        padding: var(--sp-sm) var(--sp-md);
+        gap: var(--sp-sm);
+    }
+
+    .payment-method .method-icon {
+        font-size: 1.3rem;
+        width: 32px;
+    }
+
+    .payment-method .method-name {
+        font-size: var(--font-sm);
+    }
+
+    .payment-method .method-desc {
+        font-size: var(--font-xs);
+    }
+
+    /* Cart summary — compact */
+    .cart-summary {
+        padding: var(--sp-md);
+    }
+
+    .cart-summary .summary-row.total {
+        font-size: var(--font-base);
+    }
+
+    /* POS categories — scrollable */
+    .pos-categories .cat-btn {
+        font-size: 0.7rem;
+        padding: 4px var(--sp-sm);
+    }
+
+    /* Profile */
+    .profile-avatar {
+        width: 64px;
+        height: 64px;
+        font-size: 1.6rem;
+    }
+
+    /* Order detail */
+    .order-item-row {
+        font-size: var(--font-xs);
+    }
+
+    /* Chart card */
+    .chart-card {
+        padding: var(--sp-md);
+    }
+
+    .chart-card h3 {
+        font-size: var(--font-sm);
+    }
+
+    .chart-placeholder {
+        height: 160px;
+    }
+
+    /* Customer pages — phone */
+    body>main>.container {
+        padding: var(--sp-sm) !important;
+        padding-bottom: 80px !important;
+    }
+
+    /* Customer menu hero — even smaller */
+    .menu-hero p {
+        font-size: var(--font-xs);
+    }
+
+    /* Receipt modal — full screen on phone */
+    .receipt-modal {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        border-radius: 0;
     }
 }

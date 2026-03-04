@@ -197,7 +197,7 @@
     padding: var(--sp-lg);
     display: flex;
     align-items: center;
-    gap: var(--sp-lg)
+    gap: var(--sp-lg)+
 }
 
 .stat-card .stat-icon {
@@ -865,8 +865,10 @@
     visibility: visible;
 }
 
-/* ===== Responsive ===== */
+/* ===== Responsive — Tablet (≤767px) ===== */
 @media(max-width:767px) {
+
+    /* Sidebar */
     .mobile-sidebar-header {
         display: flex;
     }
@@ -888,6 +890,7 @@
         margin-left: 0;
     }
 
+    /* Page areas */
     .page-header,
     .page-content {
         padding: var(--sp-md);
@@ -895,11 +898,113 @@
 
     .page-content {
         padding-bottom: 80px;
-        /* Space for bottom nav */
     }
 
-    /* Customer Nav */
+    .page-header h1 {
+        font-size: var(--font-xl);
+    }
 
+    /* Search box — full width on mobile */
+    .search-box {
+        max-width: 100%;
+    }
+
+    /* Products / employees toolbar — stack on mobile */
+    .products-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .products-header .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Stat cards */
+    .stat-card {
+        padding: var(--sp-md);
+        gap: var(--sp-md);
+    }
+
+    .stat-card .stat-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+        border-radius: var(--radius);
+    }
+
+    .stat-card .stat-info .stat-value {
+        font-size: var(--font-xl);
+    }
+
+    /* Tables — tighter on mobile */
+    .table th,
+    .table td {
+        padding: .5rem .625rem;
+        font-size: var(--font-xs);
+    }
+
+    .table .actions {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .table .actions .btn {
+        font-size: var(--font-xs);
+        padding: .25rem .5rem;
+    }
+
+    /* Modal — near full-screen on mobile */
+    .modal {
+        width: 96%;
+        max-height: 94vh;
+        border-radius: var(--radius-lg);
+    }
+
+    .modal-header {
+        padding: var(--sp-md);
+    }
+
+    .modal-body {
+        padding: var(--sp-md);
+    }
+
+    .modal-footer {
+        padding: var(--sp-sm) var(--sp-md);
+    }
+
+    /* Toast — full width on mobile */
+    .toast-container {
+        top: var(--sp-sm);
+        right: var(--sp-sm);
+        left: var(--sp-sm);
+    }
+
+    .toast {
+        min-width: auto;
+        width: 100%;
+    }
+
+    /* App header — tighter */
+    .app-header {
+        padding: 0 var(--sp-md);
+    }
+
+    .header-brand {
+        font-size: var(--font-base);
+    }
+
+    .header-brand span {
+        font-size: var(--font-sm);
+    }
+
+    .header-user .avatar {
+        width: 32px;
+        height: 32px;
+        font-size: var(--font-xs);
+    }
+
+    /* Customer bottom Nav */
     .header-nav {
         position: fixed;
         bottom: 0;
@@ -908,7 +1013,7 @@
         background: var(--surface);
         display: flex !important;
         justify-content: space-around;
-        padding: var(--sp-xs);
+        padding: var(--sp-xs) var(--sp-xs) calc(var(--sp-xs) + env(safe-area-inset-bottom));
         border-top: 1px solid var(--border-light);
         z-index: 100;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, .05);
@@ -916,8 +1021,150 @@
 
     .header-nav a {
         flex-direction: column;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         gap: 2px;
-        padding: var(--sp-xs);
+        padding: var(--sp-xs) var(--sp-sm);
+        border-radius: var(--radius);
+        min-width: 0;
+    }
+
+    /* Footer */
+    .app-footer {
+        padding: var(--sp-md);
+        font-size: var(--font-xs);
+    }
+
+    /* Card hover — disable transform on touch */
+    .card:hover {
+        transform: none;
+    }
+
+    /* User dropdown — make tappable */
+    .user-dropdown-menu {
+        min-width: 160px;
+    }
+
+    .user-dropdown-menu a {
+        padding: var(--sp-sm) var(--sp-md);
+        min-height: 44px;
+    }
+}
+
+/* ===== Responsive — Phone (≤480px) ===== */
+@media(max-width:480px) {
+
+    /* Even smaller page spacing */
+    .page-header {
+        padding: var(--sp-sm) var(--sp-md);
+    }
+
+    .page-header h1 {
+        font-size: var(--font-lg);
+    }
+
+    .page-header p {
+        font-size: var(--font-xs);
+    }
+
+    .page-header .breadcrumb {
+        font-size: 0.65rem;
+    }
+
+    .page-content {
+        padding: var(--sp-sm) var(--sp-md);
+        padding-bottom: 80px;
+    }
+
+    /* Stat cards — compact */
+    .stat-card {
+        padding: var(--sp-sm) var(--sp-md);
+        gap: var(--sp-sm);
+    }
+
+    .stat-card .stat-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .stat-card .stat-info h3 {
+        font-size: var(--font-xs);
+    }
+
+    .stat-card .stat-info .stat-value {
+        font-size: var(--font-lg);
+    }
+
+    /* Table — even more compact */
+    .table th,
+    .table td {
+        padding: .375rem .5rem;
+        font-size: 0.7rem;
+    }
+
+    .table th {
+        font-size: 0.65rem;
+    }
+
+    /* Buttons — full touch targets */
+    .btn {
+        min-height: 40px;
+    }
+
+    .btn-sm {
+        min-height: 34px;
+    }
+
+    .btn-lg {
+        padding: .625rem 1.25rem;
+        font-size: var(--font-sm);
+    }
+
+    /* Modal — truly full screen on tiny phones */
+    .modal {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100vh;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .modal-overlay {
+        align-items: stretch;
+    }
+
+    /* Search — 100% */
+    .search-box {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Card body — less padding */
+    .card-body {
+        padding: var(--sp-md);
+    }
+
+    .card-header {
+        padding: var(--sp-md);
+        font-size: var(--font-sm);
+    }
+
+    /* Mobile sidebar header — more compact */
+    .mobile-sidebar-header {
+        height: 56px;
+    }
+
+    .mobile-brand {
+        font-size: var(--font-sm);
+    }
+
+    /* Footer */
+    .app-footer {
+        padding: var(--sp-sm) var(--sp-md);
+        font-size: 0.7rem;
+    }
+
+    .app-footer p {
+        line-height: 1.4;
     }
 }

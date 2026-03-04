@@ -111,8 +111,85 @@ function renderFooter() {
   `;
 }
 
+/* Mobile cart panel bottom-sheet toggle */
+function initMobileCart() {
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  if (!isMobile) return;
+
+  // POS cart panel
+  const cartHeaders = document.querySelectorAll('.cart-header');
+  cartHeaders.forEach(header => {
+    header.addEventListener('click', function (e) {
+      if (e.target.closest('button')) return;
+      const panel = header.closest('.cart-panel') || header.closest('#customerCartPanel');
+      if (panel) panel.classList.toggle('open');
+    });
+  });
+
+  // Customer cart panel
+  const custCart = document.getElementById('customerCartPanel');
+  if (custCart) {
+    const custHeader = custCart.querySelector('.cart-header');
+    if (custHeader) {
+      custHeader.addEventListener('click', function (e) {
+        if (e.target.closest('button')) return;
+        custCart.classList.toggle('open');
+      });
+    }
+  }
+}
+
+/* Touch-friendly user dropdown (hover doesn't work on mobile) */
+function initMobileDropdown() {
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  if (!isMobile) return;
+
+  const dropdown = document.querySelector('.user-dropdown');
+  if (!dropdown) return;
+
+  const avatar = dropdown.querySelector('.avatar');
+  const menu = dropdown.querySelector('.user-dropdown-menu');
+  if (!avatar || !menu) return;
+
+  avatar.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menu.style.opacity = menu.style.opacity === '1' ? '0' : '1';
+    menu.style.visibility = menu.style.visibility === 'visible' ? 'hidden' : 'visible';
+    menu.style.transform = menu.style.transform === 'translateY(0px)' ? 'translateY(-10px)' : 'translateY(0px)';
+  });
+
+  // Close when tapping elsewhere
+  document.addEventListener('click', function () {
+    menu.style.opacity = '0';
+    menu.style.visibility = 'hidden';
+    menu.style.transform = 'translateY(-10px)';
+  });
+}
+
+/* Close sidebar when clicking a nav link on mobile */
+function initSidebarNavClose() {
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  if (!isMobile) return;
+
+  const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', function () {
+      const sidebar = document.querySelector('.sidebar');
+      const overlay = document.querySelector('.sidebar-overlay');
+      if (sidebar) sidebar.classList.remove('open');
+      if (overlay) overlay.classList.remove('active');
+    });
+  });
+}
+
 async function initComponents() {
   await renderHeader();
   renderFooter();
+  // Init mobile features after DOM is ready
+  setTimeout(() => {
+    initMobileCart();
+    initMobileDropdown();
+    initSidebarNavClose();
+  }, 100);
 }
 
