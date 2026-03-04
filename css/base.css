@@ -180,6 +180,44 @@ ol {
         grid-template-columns: 1fr;
         gap: var(--sp-lg);
     }
+
+    .container {
+        padding: 0 var(--sp-md);
+    }
+
+    h1 {
+        font-size: var(--font-xl);
+    }
+
+    h2 {
+        font-size: var(--font-lg);
+    }
+
+    h3 {
+        font-size: var(--font-base);
+    }
+}
+
+@media(max-width:480px) {
+    .responsive-grid {
+        gap: var(--sp-md);
+    }
+
+    .container {
+        padding: 0 var(--sp-sm);
+    }
+
+    h1 {
+        font-size: var(--font-lg);
+    }
+
+    h2 {
+        font-size: var(--font-base);
+    }
+
+    h3 {
+        font-size: var(--font-sm);
+    }
 }
 
 /* ===== Animations ===== */
