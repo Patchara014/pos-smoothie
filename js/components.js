@@ -94,11 +94,6 @@ async function renderSidebar() {
     <div class="sidebar-logout">
       <a href="#" onclick="Auth.logout();return false">🚪 ออกจากระบบ</a>
     </div>
-
-    <div class="sidebar-footer">
-      <p>© 2026 ป้าณาน้ำผลไม้ปั่น</p>
-      <span>ระบบบริหารจัดการร้านอัจฉริยะ</span>
-    </div>
   `;
 
   // Create Mobile Toggle
@@ -171,11 +166,7 @@ function initMobileCartToggle() {
 function renderFooter() {
   const footerEl = document.getElementById('footer');
   if (!footerEl) return;
-  footerEl.innerHTML = `
-    <footer class="app-footer">
-      <p>© 2026 — <strong>ป้าณาน้ำผลไม้ปั่น</strong> — ระบบบริหารจัดการร้านอัจฉริยะ</p>
-    </footer>
-  `;
+  footerEl.innerHTML = '';
 }
 
 async function initComponents() {
