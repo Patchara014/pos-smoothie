@@ -20,25 +20,24 @@
                 <p>ดูรายการคำสั่งซื้อทั้งหมด</p>
             </div>
             <div class="page-content">
-                <div class="orders-filters">
-                    <div class="search-box">
+                <div class="orders-filters mobile-column">
+                    <div class="search-box flex-1">
                         <span class="search-icon">🔍</span>
                         <input type="text" id="orderSearch" class="form-input"
                             placeholder="ค้นหาด้วยเลขที่ หรือ ชื่อสินค้า..." style="padding-left:2.5rem">
                     </div>
-                    <select id="orderStatus" class="form-input form-select" style="width:auto;min-width:160px">
+                    <select id="orderStatus" class="form-input form-select w-full" style="min-width:160px">
                         <option value="">ทุกสถานะ</option>
                         <option value="completed">✅ เสร็จสิ้น</option>
                         <option value="pending">⏳ รอดำเนินการ</option>
                         <option value="cancelled">❌ ยกเลิก</option>
                     </select>
-                    <select id="orderEmployee" class="form-input form-select" style="width:auto;min-width:160px">
+                    <select id="orderEmployee" class="form-input form-select w-full" style="min-width:160px">
                         <option value="">พนักงานทั้งหมด</option>
                     </select>
-                    <div
-                        style="margin-left:auto;display:flex;align-items:center;gap:1rem;font-size:.9rem;color:var(--text-secondary)">
+                    <div class="ml-auto flex items-center gap-md text-sm text-secondary mobile-mt-md">
                         <span>รวม: <strong id="ordersTotal">0</strong> รายการ</span>
-                        <span>รายได้: <strong id="ordersRevenue" style="color:var(--primary)">฿0</strong></span>
+                        <span>รายได้: <strong id="ordersRevenue" class="text-primary">฿0</strong></span>
                     </div>
                 </div>
                 <div class="card animate-fade-in">
@@ -68,8 +67,8 @@
                         <h3>🧾 ใบเสร็จ</h3>
                         <button class="modal-close" onclick="closeReceiptModal()">✕</button>
                     </div>
-                    <div id="receiptContent" style="padding:0"></div>
-                    <div class="modal-footer" style="display:flex;gap:.5rem">
+                    <div id="receiptContent" class="p-0"></div>
+                    <div class="modal-footer flex gap-sm">
                         <button class="btn btn-primary btn-block" onclick="downloadReceipt()">📥 บันทึกรูปภาพ</button>
                         <button class="btn btn-outline btn-block" onclick="printReceipt()">🖨️ พิมพ์</button>
                     </div>

@@ -506,6 +506,10 @@
         gap: var(--sp-md);
     }
 
+    .profile-form {
+        grid-template-columns: 1fr;
+    }
+
     .profile-form .full-width {
         grid-column: span 1;
     }

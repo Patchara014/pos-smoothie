@@ -11,21 +11,22 @@
 </head>
 
 <body>
-    <div id="header"></div>
-    <main class="main-content">
-        <div class="page-header">
-            <div>
-                <div class="breadcrumb" style="font-size:.85rem;color:var(--text-muted);margin-bottom:.5rem;">🏠 หน้าแรก
-                    <span>/</span> ประวัติ</div>
-                <h1 style="color:var(--primary-dark);">📋 ประวัติการสั่งซื้อ</h1>
-                <p>ดูรายการสั่งซื้อทั้งหมดของคุณ</p>
+    <div class="app-layout">
+        <div id="header"></div>
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <div class="breadcrumb text-muted mb-xs">🏠 หน้าแรก <span>/</span> ประวัติ</div>
+                    <h1 class="text-primary-dark">📋 ประวัติการสั่งซื้อ</h1>
+                    <p>ดูรายการสั่งซื้อทั้งหมดของคุณ</p>
+                </div>
             </div>
-        </div>
-        <div class="page-content">
-            <div id="customerOrdersList"></div>
-        </div>
-    </main>
-    <div id="footer"></div>
+            <div class="page-content">
+                <div id="customerOrdersList"></div>
+                <div id="footer"></div>
+            </div>
+        </main>
+    </div>
 
     <!-- Receipt Modal -->
     <div class="modal-overlay" id="receiptModal">
@@ -39,9 +40,9 @@
                     <!-- Receipt content injected by JS -->
                 </div>
             </div>
-            <div class="modal-footer no-print">
+            <div class="modal-footer no-print flex justify-between items-center">
                 <button class="btn btn-outline" onclick="closeReceiptModal()">ปิด</button>
-                <div style="display:flex;gap:.5rem">
+                <div class="flex gap-sm">
                     <button class="btn btn-outline" onclick="printReceipt()">🖨️ พิมพ์</button>
                     <button class="btn btn-primary" onclick="downloadReceipt()">💾 บันทึกรูป</button>
                 </div>

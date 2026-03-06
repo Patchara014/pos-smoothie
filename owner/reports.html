@@ -20,14 +20,13 @@
                 <p>ข้อมูลวิเคราะห์ยอดขายและสินค้าสำหรับเจ้าของร้าน</p>
             </div>
 
-            <div class="page-content" style="padding-top:1rem">
+            <div class="page-content mt-md">
                 <!-- Filters -->
-                <div class="card animate-fade-in" style="margin-bottom:var(--sp-xl)">
-                    <div class="card-body report-filters-bar"
-                        style="display:flex;align-items:center;gap:var(--sp-md);padding:1rem var(--sp-lg)">
-                        <strong style="font-size:var(--font-sm)">ช่วงเวลา: </strong>
-                        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-md)">
-                            <div style="display:flex;gap:.5rem">
+                <div class="card animate-fade-in mb-xl">
+                    <div class="card-body report-filters-bar flex items-center gap-md mobile-column">
+                        <strong class="text-sm">ช่วงเวลา: </strong>
+                        <div class="flex flex-wrap items-center gap-md">
+                            <div class="flex gap-xs">
                                 <button class="btn btn-sm btn-outline active report-period-btn"
                                     data-mode="day">รายวัน</button>
                                 <button class="btn btn-sm btn-outline report-period-btn"
@@ -37,9 +36,10 @@
                                 <button class="btn btn-sm btn-outline report-period-btn"
                                     data-mode="all">ทั้งหมด</button>
                             </div>
-                            <div style="height:24px;width:1px;background:var(--border);margin:0 .5rem"></div>
-                            <div style="display:flex;align-items:center;gap:.5rem">
-                                <span style="font-size:var(--font-xs);color:var(--text-muted)">เลือกเฉพาะ:</span>
+                            <div class="hidden mobile-column" style="height:24px;width:1px;background:var(--border);">
+                            </div>
+                            <div class="flex items-center gap-xs">
+                                <span class="text-xs text-muted">เลือกเฉพาะ:</span>
                                 <select id="reportMonth" class="form-select"
                                     style="width:130px;padding:.25rem .5rem;font-size:var(--font-xs)">
                                     <option value="">ทุกเดือน</option>
@@ -64,7 +64,7 @@
                 </div>
 
                 <!-- Stats Grid -->
-                <div class="stats-grid stagger" style="margin-bottom:var(--sp-xl)">
+                <div class="stats-grid stagger mb-xl">
                     <div class="card stat-card">
                         <div class="stat-icon" style="background:var(--primary-bg);color:var(--primary)">💰</div>
                         <div class="stat-info">
@@ -112,7 +112,7 @@
                     </div>
                 </div>
 
-                <div class="card animate-fade-in" style="margin-top:var(--sp-xl)">
+                <div class="card animate-fade-in mt-xl">
                     <div class="card-header">
                         📊 สรุปยอดขายรายสินค้า
                     </div>

@@ -740,7 +740,8 @@
 
     /* Toasts */
     .toast-container {
-        top: 0;
+        top: 60px !important;
+        /* Clear hamburger menu */
         left: 0;
         right: 0;
         padding: 0;
@@ -847,6 +848,9 @@
     }
 
     .app-footer {
-        padding: var(--sp-lg) 0 !important;
+        padding: var(--sp-lg) var(--sp-md) !important;
+        margin-top: auto;
+        /* Push to bottom of flex container */
+        width: 100%;
     }
 }

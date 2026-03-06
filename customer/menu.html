@@ -11,75 +11,72 @@
 </head>
 
 <body>
-    <div id="header"></div>
-    <main class="main-content">
-        <div class="page-header">
-            <div>
-                <div class="breadcrumb" style="font-size:.85rem;color:var(--text-muted);margin-bottom:.5rem;">🏠 หน้าแรก
-                    <span>/</span> สั่งซื้อ
+    <div class="app-layout">
+        <div id="header"></div>
+        <main class="main-content">
+            <div class="page-header">
+                <div class="flex-1">
+                    <div class="breadcrumb text-muted mb-xs">🏠 หน้าแรก <span>/</span> สั่งซื้อ</div>
+                    <h1 class="text-primary-dark">🥤 สั่งเครื่องดื่ม</h1>
+                    <p>น้ำผลไม้ปั่นสด ทำจากผลไม้คุณภาพ อร่อยและดีต่อสุขภาพ</p>
                 </div>
-                <h1 style="color:var(--primary-dark);">🥤 สั่งเครื่องดื่ม</h1>
-                <p>น้ำผลไม้ปั่นสด ทำจากผลไม้คุณภาพ อร่อยและดีต่อสุขภาพ</p>
             </div>
-        </div>
-        <div class="page-content">
-            <!-- Hero removed, space is now properly managed by Page Header -->
-            <div class="pos-layout">
-                <div class="pos-products">
-                    <h3 style="margin-bottom:var(--sp-lg)">📋 เมนูทั้งหมด</h3>
-                    <div class="product-grid stagger" id="menuGrid"></div>
-                </div>
-
-                <!-- Cart Panel -->
-                <div class="cart-panel" id="customerCartPanel">
-                    <div class="cart-header">
-                        <h3>🛒 ตะกร้า (<span id="custCartCount">0</span>)</h3>
+            <div class="page-content">
+                <!-- Hero removed, space is now properly managed by Page Header -->
+                <div class="pos-layout">
+                    <div class="pos-products">
+                        <h3 class="mb-lg">📋 เมนูทั้งหมด</h3>
+                        <div class="product-grid stagger" id="menuGrid"></div>
                     </div>
-                    <div class="cart-items" id="custCartItems" style="max-height:360px;overflow-y:auto"></div>
-                    <div class="cart-summary">
-                        <div class="summary-row total"><span>ยอดรวม</span><span id="custCartTotal">฿0</span></div>
 
-                        <!-- Payment Methods Selection -->
-                        <div style="margin: 1rem 0;">
-                            <label
-                                style="font-size: .9rem; color: var(--text-secondary); margin-bottom: .5rem; display: block;">วิธีชำระเงิน:</label>
-                            <div class="payment-methods" style="grid-template-columns: 1fr; gap: .5rem;"
-                                id="custPaymentMethods">
-                                <div class="payment-method active" data-method="promptpay"
-                                    style="padding: .75rem; text-align: center;">
-                                    <div class="method-icon" style="font-size: 1.5rem; margin-bottom: .25rem;">📱
+                    <!-- Cart Panel -->
+                    <div class="cart-panel" id="customerCartPanel">
+                        <div class="cart-header">
+                            <h3>🛒 ตะกร้า (<span id="custCartCount">0</span>)</h3>
+                        </div>
+                        <div class="cart-items" id="custCartItems"></div>
+                        <div class="cart-summary">
+                            <div class="summary-row total"><span>ยอดรวม</span><span id="custCartTotal">฿0</span></div>
+
+                            <!-- Payment Methods Selection -->
+                            <div class="mt-md mb-md">
+                                <label class="text-secondary mb-xs w-full">วิธีชำระเงิน:</label>
+                                <div class="payment-methods" id="custPaymentMethods">
+                                    <div class="payment-method active" data-method="promptpay">
+                                        <div class="method-icon">📱</div>
+                                        <div class="method-name">ชำระเงินผ่าน พร้อมเพย์</div>
                                     </div>
-                                    <div class="method-name" style="font-size: .9rem;">ชำระเงินผ่าน พร้อมเพย์</div>
                                 </div>
                             </div>
-                        </div>
 
-                        <button class="btn btn-primary btn-block btn-lg" onclick="placeCustomerOrder()">📦
-                            สั่งซื้อเลย!</button>
+                            <button class="btn btn-primary btn-block btn-lg" onclick="placeCustomerOrder()">📦
+                                สั่งซื้อเลย!</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+            <div id="footer"></div>
+        </main>
+    </div>
 
     <!-- PromptPay Modal -->
     <div class="modal-overlay" id="custPromptpayModal">
-        <div class="modal" style="max-width:350px;text-align:center">
-            <h3 style="margin-bottom:.5rem">📱 สแกนจ่ายด้วย PromptPay</h3>
-            <p style="color:var(--text-secondary);margin-bottom:1rem">สแกน QR Code แล้วระบุยอดชำระเอง</p>
-            <div id="custQrCanvas"
-                style="padding:1rem;background:#fff;border-radius:12px;display:inline-block;box-shadow:var(--shadow-md)">
+        <div class="modal" style="max-width:350px;">
+            <div class="text-center">
+                <h3 class="mb-xs">📱 สแกนจ่ายด้วย PromptPay</h3>
+                <p class="text-secondary mb-md">สแกน QR Code แล้วระบุยอดชำระเอง</p>
+                <div id="custQrCanvas"
+                    style="padding:1rem;background:#fff;border-radius:12px;display:inline-block;box-shadow:var(--shadow-md)">
+                </div>
+                <p class="mt-md text-primary" style="font-size:1.3rem;font-weight:700;" id="custQrAmount"></p>
+                <p class="text-muted mb-lg" style="font-size:.85rem;" id="custQrPromptpayId"></p>
+                <button class="btn btn-primary btn-block" onclick="confirmCustPromptpayOrder()">✅ โอนเรียบร้อย
+                    บันทึกออเดอร์</button>
+                <button class="btn btn-outline btn-block mt-xs" onclick="closeCustPromptpayModal()">ยกเลิก</button>
             </div>
-            <p style="margin-top:1rem;font-size:1.3rem;font-weight:700;color:var(--primary)" id="custQrAmount"></p>
-            <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:1.5rem" id="custQrPromptpayId"></p>
-            <button class="btn btn-primary btn-block" onclick="confirmCustPromptpayOrder()">✅ โอนเรียบร้อย
-                บันทึกออเดอร์</button>
-            <button class="btn btn-outline btn-block" style="margin-top:.5rem"
-                onclick="closeCustPromptpayModal()">ยกเลิก</button>
         </div>
     </div>
 
-    <div id="footer"></div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase.js"></script>
     <script src="../js/data.js"></script>
