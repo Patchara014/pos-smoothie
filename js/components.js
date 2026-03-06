@@ -94,6 +94,11 @@ async function renderSidebar() {
     <div class="sidebar-logout">
       <a href="#" onclick="Auth.logout();return false">🚪 ออกจากระบบ</a>
     </div>
+
+    <div class="sidebar-footer">
+      <p>© 2026 ป้าณาน้ำผลไม้ปั่น</p>
+      <span>ระบบบริหารจัดการร้านอัจฉริยะ</span>
+    </div>
   `;
 
   // Create Mobile Toggle
@@ -167,8 +172,8 @@ function renderFooter() {
   const footerEl = document.getElementById('footer');
   if (!footerEl) return;
   footerEl.innerHTML = `
-    <footer class="app-footer" style="padding: var(--sp-2xl) 0; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
-      <p>© 2026 — <span style="font-weight:700; color:var(--primary)">ป้าณาน้ำผลไม้ปั่น</span> — ระบบบริหารจัดการร้านอัจฉริยะ</p>
+    <footer class="app-footer">
+      <p>© 2026 — <strong>ป้าณาน้ำผลไม้ปั่น</strong> — ระบบบริหารจัดการร้านอัจฉริยะ</p>
     </footer>
   `;
 }
