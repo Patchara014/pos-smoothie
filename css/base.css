@@ -88,6 +88,23 @@
     --view-h: 100dvh;
 }
 
+/* Global Mobile Adjustments */
+@media (max-width: 480px) {
+    :root {
+        --sp-md: 0.75rem;
+        --sp-lg: 1rem;
+        --sp-xl: 1.5rem;
+        --sp-2xl: 2rem;
+
+        --font-4xl: 1.75rem;
+        --font-3xl: 1.5rem;
+        --font-2xl: 1.25rem;
+        --font-xl: 1.125rem;
+
+        --header-h: 60px;
+    }
+}
+
 /* ===== Reset & Base ===== */
 *,
 *::before,
