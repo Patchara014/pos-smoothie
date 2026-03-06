@@ -642,7 +642,7 @@
 }
 
 .page-header {
-    padding: var(--sp-2xl);
+    padding: var(--sp-xl) var(--sp-2xl);
     background: var(--surface);
     border-bottom: 1px solid var(--border-light);
     display: flex;
@@ -651,14 +651,21 @@
 }
 
 .page-header h1 {
-    font-size: var(--font-4xl);
+    font-size: var(--font-3xl);
     font-weight: 800;
     letter-spacing: -0.01em;
     line-height: 1.1;
+    margin-bottom: var(--sp-sm);
+    /* additional space to pull away from top/bottom */
+}
+
+.page-header p {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
 }
 
 .page-content {
-    padding: var(--sp-2xl);
+    padding: var(--sp-xl) var(--sp-2xl);
     flex: 1;
 }
 

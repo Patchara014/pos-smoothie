@@ -379,7 +379,7 @@ async function processPayment() {
       items: JSON.parse(JSON.stringify(cart)),
       total,
       paymentMethod: paymentType,
-      status: 'completed',
+      status: 'pending',
       employeeId: user.id,
       customerId: null
     });
