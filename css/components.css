@@ -15,6 +15,8 @@
     white-space: nowrap;
     text-decoration: none;
     line-height: 1.4;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn:active {
@@ -175,8 +177,8 @@
 }
 
 .card:hover {
-    box-shadow: var(--shadow);
-    transform: translateY(-2px)
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px)
 }
 
 .card-body {
@@ -209,6 +211,7 @@
     justify-content: center;
     font-size: 1.75rem;
     flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
 }
 
 .stat-card .stat-info h3 {
@@ -259,6 +262,14 @@
     border-bottom: none;
 }
 
+.card-glass {
+    background: rgba(255, 255, 255, .7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, .4);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
 /* ===== Header & Unified Dropdown Navigation ===== */
 .app-header {
     height: var(--header-h);
@@ -295,7 +306,12 @@
 }
 
 .brand-emoji {
-    font-size: 1.75rem;
+    font-size: 1.8rem;
+    transition: transform 0.5s var(--ease);
+}
+
+.header-brand:hover .brand-emoji {
+    transform: rotate(15deg) scale(1.1);
 }
 
 .brand-text span {
@@ -378,6 +394,20 @@
     transform: translateY(10px);
     transition: all var(--duration-md) var(--ease);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Drawer Handle for Mobile */
+.user-dropdown-menu::before {
+    content: '';
+    display: none;
+    width: 40px;
+    height: 5px;
+    background: var(--border);
+    border-radius: var(--radius-pill);
+    margin: 12px auto 6px;
+    flex-shrink: 0;
 }
 
 .user-dropdown-menu.open {
@@ -507,18 +537,32 @@
 
     .avatar-wrapper {
         padding: 4px;
+        background: transparent;
+        border: none;
     }
 
+    /* Convert to Bottom Drawer for Mobile Native feel */
     .user-dropdown-menu {
         position: fixed;
-        left: var(--sp-md);
-        right: var(--sp-md);
+        left: 0;
+        right: 0;
+        bottom: 0;
         top: auto;
-        bottom: var(--sp-md);
-        width: auto;
-        max-width: 440px;
-        margin: 0 auto;
-        border-radius: var(--radius-xl);
+        width: 100%;
+        max-width: none;
+        max-height: 85vh;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        transform: translateY(100%);
+        border: none;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .user-dropdown-menu::before {
+        display: block;
+    }
+
+    .user-dropdown-menu.open {
+        transform: translateY(0);
     }
 
     .chart-grid {
