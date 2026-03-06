@@ -756,16 +756,11 @@ function renderCustomerMenu() {
   const products = menuProductsCache.filter(p => p.status === 'active');
   const grid = document.getElementById('menuGrid');
   grid.innerHTML = products.map(p => `
-    <div class="card menu-item animate-fade-in">
-      <div class="menu-img">${p.emoji || '🍹'}</div>
-      <div class="menu-info">
-        <div class="menu-name">${p.name}</div>
-        <div class="menu-desc">${p.description || ''}</div>
-        <div class="menu-bottom">
-          <span class="menu-price">${formatCurrency(p.price)}</span>
-          <button class="btn btn-sm btn-primary" onclick="addToCustomerCart('${p.id}')">+ เพิ่ม</button>
-        </div>
-      </div>
+    <div class="card product-card animate-scale-in" onclick="addToCustomerCart('${p.id}')" style="cursor:pointer">
+      <div class="product-img">${p.emoji || '🍹'}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-price">${formatCurrency(p.price)}</div>
+      <div style="margin-top:var(--sp-sm);color:var(--text-secondary);font-size:var(--font-xs);">${p.description || ''}</div>
     </div>
   `).join('');
 }

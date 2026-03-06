@@ -16,47 +16,46 @@
         <div class="page-header">
             <div>
                 <div class="breadcrumb" style="font-size:.85rem;color:var(--text-muted);margin-bottom:.5rem;">🏠 หน้าแรก
-                    <span>/</span> สั่งซื้อ</div>
+                    <span>/</span> สั่งซื้อ
+                </div>
                 <h1 style="color:var(--primary-dark);">🥤 สั่งเครื่องดื่ม</h1>
                 <p>น้ำผลไม้ปั่นสด ทำจากผลไม้คุณภาพ อร่อยและดีต่อสุขภาพ</p>
             </div>
         </div>
         <div class="page-content">
-            <div class="responsive-grid">
-                <!-- Menu -->
-                <div>
+            <!-- Hero removed, space is now properly managed by Page Header -->
+            <div class="pos-layout">
+                <div class="pos-products">
                     <h3 style="margin-bottom:var(--sp-lg)">📋 เมนูทั้งหมด</h3>
-                    <div class="menu-grid stagger" id="menuGrid"></div>
+                    <div class="product-grid stagger" id="menuGrid"></div>
                 </div>
 
                 <!-- Cart Panel -->
-                <div>
-                    <div class="cart-panel" id="customerCartPanel">
-                        <div class="cart-header">
-                            <h3>🛒 ตะกร้า (<span id="custCartCount">0</span>)</h3>
-                        </div>
-                        <div class="cart-items" id="custCartItems" style="max-height:360px;overflow-y:auto"></div>
-                        <div class="cart-summary">
-                            <div class="summary-row total"><span>ยอดรวม</span><span id="custCartTotal">฿0</span></div>
+                <div class="cart-panel" id="customerCartPanel">
+                    <div class="cart-header">
+                        <h3>🛒 ตะกร้า (<span id="custCartCount">0</span>)</h3>
+                    </div>
+                    <div class="cart-items" id="custCartItems" style="max-height:360px;overflow-y:auto"></div>
+                    <div class="cart-summary">
+                        <div class="summary-row total"><span>ยอดรวม</span><span id="custCartTotal">฿0</span></div>
 
-                            <!-- Payment Methods Selection -->
-                            <div style="margin: 1rem 0;">
-                                <label
-                                    style="font-size: .9rem; color: var(--text-secondary); margin-bottom: .5rem; display: block;">วิธีชำระเงิน:</label>
-                                <div class="payment-methods" style="grid-template-columns: 1fr; gap: .5rem;"
-                                    id="custPaymentMethods">
-                                    <div class="payment-method active" data-method="promptpay"
-                                        style="padding: .75rem; text-align: center;">
-                                        <div class="method-icon" style="font-size: 1.5rem; margin-bottom: .25rem;">📱
-                                        </div>
-                                        <div class="method-name" style="font-size: .9rem;">ชำระเงินผ่าน พร้อมเพย์</div>
+                        <!-- Payment Methods Selection -->
+                        <div style="margin: 1rem 0;">
+                            <label
+                                style="font-size: .9rem; color: var(--text-secondary); margin-bottom: .5rem; display: block;">วิธีชำระเงิน:</label>
+                            <div class="payment-methods" style="grid-template-columns: 1fr; gap: .5rem;"
+                                id="custPaymentMethods">
+                                <div class="payment-method active" data-method="promptpay"
+                                    style="padding: .75rem; text-align: center;">
+                                    <div class="method-icon" style="font-size: 1.5rem; margin-bottom: .25rem;">📱
                                     </div>
+                                    <div class="method-name" style="font-size: .9rem;">ชำระเงินผ่าน พร้อมเพย์</div>
                                 </div>
                             </div>
-
-                            <button class="btn btn-primary btn-block btn-lg" onclick="placeCustomerOrder()">📦
-                                สั่งซื้อเลย!</button>
                         </div>
+
+                        <button class="btn btn-primary btn-block btn-lg" onclick="placeCustomerOrder()">📦
+                            สั่งซื้อเลย!</button>
                     </div>
                 </div>
             </div>
